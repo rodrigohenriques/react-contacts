@@ -15,7 +15,7 @@ function ListContacts(props) {
             <p>{contact.email}</p>
           </div>
 
-          <button className='contact-remove'>Remove</button>
+          <button className='contact-remove' onClick={() => props.onDeleteContact(contact)}>Remove</button>
         </li>
       ))}
     </ol>
@@ -23,7 +23,8 @@ function ListContacts(props) {
 }
 
 ListContacts.propTypes = {
-  contacts: PropTypes.array
+  contacts: PropTypes.array,
+  removeContact: PropTypes.func
 }
 
 export default ListContacts
