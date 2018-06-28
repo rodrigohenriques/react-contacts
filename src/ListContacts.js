@@ -7,8 +7,7 @@ import { Link } from 'react-router-dom'
 class ListContacts extends Component {
   static propTypes = {
     contacts: PropTypes.array.isRequired,
-    onDeleteContact: PropTypes.func.isRequired,
-    onAddContact: PropTypes.func.isRequired
+    onDeleteContact: PropTypes.func.isRequired
   }
 
   state = {
@@ -22,7 +21,7 @@ class ListContacts extends Component {
   clearQuery = () => this.setState({ query: '' })
 
   render() {
-    const { contacts, onDeleteContact, onAddContact } = this.props
+    const { contacts, onDeleteContact } = this.props
     const { query } = this.state
 
     let showingContacts
