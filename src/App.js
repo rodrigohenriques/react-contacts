@@ -25,15 +25,22 @@ class App extends Component {
     ContactsApi.remove(contact)
   }
 
+  addContact = () => {
+    this.setState({ screen: 'create' })
+  }
+
   render() {
     return (
       <div className="App">
         {this.state.screen === 'list' && (
-          <ListContacts contacts={this.state.contacts} onDeleteContact={this.removeContact} />
+          <ListContacts
+            contacts={this.state.contacts}
+            onDeleteContact={this.removeContact}
+            onAddContact={this.addContact} />
         )}
-        
+
         {this.state.screen === 'create' && (
-          <CreateContact/>
+          <CreateContact />
         )}
       </div>
     );

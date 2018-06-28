@@ -6,7 +6,8 @@ import sortBy from 'sort-by'
 class ListContacts extends Component {
   static propTypes = {
     contacts: PropTypes.array.isRequired,
-    onDeleteContact: PropTypes.func.isRequired
+    onDeleteContact: PropTypes.func.isRequired,
+    onAddContact: PropTypes.func.isRequired
   }
 
   state = {
@@ -20,7 +21,7 @@ class ListContacts extends Component {
   clearQuery = () => this.setState({ query: '' })
 
   render() {
-    const { contacts, onDeleteContact } = this.props
+    const { contacts, onDeleteContact, onAddContact } = this.props
     const { query } = this.state
 
     let showingContacts
@@ -45,6 +46,11 @@ class ListContacts extends Component {
           value={query}
           onChange={(event) => this.updateQuery(event.target.value)}
         />
+
+        <a
+          href='#create'
+          onClick={() => onAddContact()}
+          className='add-contact'>Add Contact</a>
       </div>
 
       {showingContacts.length !== contacts.length && (
@@ -53,7 +59,7 @@ class ListContacts extends Component {
           <button onClick={this.clearQuery}>Show all</button>
         </div>
       )}
-      
+
       <ol className='contact-list'>
         {showingContacts.map((contact) => (
           <li key={contact.id} className='contact-list-item'>
